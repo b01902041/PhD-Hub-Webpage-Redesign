@@ -45,13 +45,14 @@ ul, ol, dl {list-style-position: outside; margin-bottom: 25px}
 .main-font {font-family: 'Montserrat', sans-serif;}
 
 /* heading */
-h1, h2, h3, h4, h5, h6 {margin:0 0 25px; padding:0; letter-spacing: 0; font-weight: 400;}
+h1, h2, h3, h4, h5, h6, h7{margin:0 0 25px; padding:0; letter-spacing: 0; font-weight: 400;}
 h1 {font-size:70px; line-height: 70px;}
 h2 {font-size:55px; line-height:60px}
 h3 {font-size:48px; line-height:54px}
 h4 {font-size:40px; line-height:46px}
 h5 {font-size:32px; line-height:40px}
 h6 {font-size:25px; line-height:30px}
+h7 {font-size:15px; line-height:20px}
 
 /* text size */
 .text-extra-small {font-size:11px; line-height:14px}
@@ -637,6 +638,48 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .background-position-top {background-position: center top !important;}
 .up-down-ani { display:table; position: relative; -webkit-animation-name: up-down-animation; -webkit-animation-duration:.7s; -webkit-animation-timing-function: linear; -webkit-animation-delay:.7s; -webkit-animation-iteration-count: infinite; -webkit-animation-direction: alternate; -moz-animation-name: up-down-animation; -moz-animation-duration:.7s; -moz-animation-timing-function: linear; -moz-animation-delay:.7s; -moz-animation-iteration-count: infinite; -ms-animation-name: up-down-animation; -ms-animation-duration:.7s; -ms-animation-timing-function: linear; -ms-animation-delay:.7s; -ms-animation-iteration-count: infinite; -ms-animation-direction: alternate; -o-animation-direction: alternate; -o-animation-name: up-down-animation; -o-animation-duration:.7s; -o-animation-timing-function: linear; -o-animation-delay:.7s; -o-animation-iteration-count: infinite; -o-animation-direction: alternate; animation-direction: alternate; animation-name: up-down-animation; animation-duration:.7s; animation-timing-function: linear; animation-delay:.7s; animation-iteration-count: infinite; animation-direction: alternate; margin:0 auto; }
 .background-position-x-50 {background-position-x: 50% !important;}
+
+/* ===================================
+    Banner
+====================================== */
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(43, 24, 84, 0.5);
+}
+
+
+.banner-title {
+  position: relative;
+  z-index: 2;
+  color: white;
+  letter-spacing: 20px;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
 
 /*==============================
     Margin
@@ -3562,6 +3605,174 @@ header.sticky nav.navbar.brand-center ul.nav > li > a {padding: 20px; margin: 0 
 /* testimonial-box */
 .testimonial-box .image-box {display: table-cell; vertical-align: middle}
 .testimonial-box .name-box {display: table-cell; vertical-align: middle}
+
+
+/* ===================================
+   Card
+====================================== */
+.card-container {
+  width: 300px;
+  height: 300px;
+  perspective: 3000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  padding: 0;
+  margin: 0;
+}
+
+.card-container:hover .card{
+  transform: rotateY(180deg);
+}
+
+/* .card-container:hover .back {
+  opacity: 1;
+}
+
+.back > * {
+  opacity: 0;
+  transform: translateY(20px) rotateY(180deg);
+} */
+
+.card-container:hover .back > *{
+  animation: CardfadeInUp 0.6s;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
+}
+@keyframes CardfadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  color: white;
+  background-color: rgba(74, 40, 130, 1);
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+
+.bg-lightcolor {
+  background-color: rgba(74, 40, 130, 0.28);
+}
+
+.text-darkcolor {
+  color: black;
+}
+
+.back {
+  transform: rotateY(180deg);
+  overflow-y: auto; /* 允許垂直滾動 */
+  scrollbar-width: thin; /* 為Firefox設置細滾動條 */
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* 為Firefox設置滾動條顏色 */
+  transition: transform 0.6s, opacity 0.3s 0.3s;
+}
+.back::-webkit-scrollbar {
+  width: 6px; /* 滾動條寬度 */
+}
+.back::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* 滾動條顏色 */
+  border-radius: 3px; /* 滾動條圓角 */
+}
+.back::-webkit-scrollbar-track {
+  background: transparent; /* 滾動條軌道透明 */
+}
+
+.back .arrow-icon {
+  position: sticky; /* 使箭頭圖標保持在視圖中 */
+  bottom: 0;
+  color: var(--line-color, white);;
+  font-size: 20px;
+  align-self: flex-end; /* 將箭頭對齊到右側 */
+  margin-top: 10px; /* 為箭頭添加一些上邊距 */
+}
+.back.text-darkcolor {
+  --line-color: black;
+}
+
+.card h1, .card h2, .card h3, .card h4, .card p{
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  line-height: 1;
+  text-align: left;
+  width: 100%;
+}
+
+.card h1 { font-size: 24px;}
+.card h2 { font-size: 20px; margin-bottom: 10px; line-height: 1.2; font-weight: 500;}
+.card h3 { font-size: 16px; line-height: 1.4;}
+.card h4 { font-size: 12px;}
+.card p { font-size: 14px; 
+          line-height: 2; 
+          font-weight:400;
+          line-height: 1.8;
+          margin: 0 0 30px 0;
+          padding: 0 10px 0 0; /* 右側添加一些padding，為滾動條留出空間 */
+          text-align: left;
+          width: 100%;
+          height: 100%;
+          max-height: calc(100% - 40px);
+          overflow-y: auto;
+          flex-grow: 1;
+          -webkit-box-orient: vertical;
+        }
+
+.top-content, .middle-content, .bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+
+.top-content {
+  align-items: flex-start;
+}
+
+.top-content::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--line-color, white);
+  margin-top: 10px;
+}
+
+.front.text-darkcolor {
+  --line-color: black;
+}
+
+.middle-content {
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bottom-content {
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
 
 /* ===================================
    Blog
