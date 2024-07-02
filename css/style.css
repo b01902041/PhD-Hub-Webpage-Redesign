@@ -9614,7 +9614,8 @@ header {
 
 /* Swipe up header disappear */
 header {
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   width: 100%;
   top: 0;
   transition: transform 0.3s ease-out;
