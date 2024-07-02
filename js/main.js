@@ -2922,3 +2922,25 @@ $(window).load(function () {
 /* ===================================
  END Page Load
  ====================================== */
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > navbar.clientHeight) {
+            // 向下滾動
+            header.classList.add('nav-up');
+        } else {
+            // 向上滾動或在頁面頂部
+            header.classList.remove('nav-up');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
