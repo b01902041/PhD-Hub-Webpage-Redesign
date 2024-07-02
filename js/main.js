@@ -2973,3 +2973,24 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleScroll, {passive: true});
     window.addEventListener('touchmove', handleScroll, {passive: true});
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var scrollFadeElements = document.querySelectorAll('.scroll-fade');
+    var delay = 200;
+    
+    function checkFade() {
+        scrollFadeElements.forEach(function(element, index) {
+            var position = element.getBoundingClientRect().top;
+            var screenHeight = window.innerHeight;
+            
+            if (position < screenHeight * 0.9  && !element.classList.contains('appear')) {
+                setTimeout(function() {
+                    element.classList.add('appear');
+                }, index * delay);
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkFade);
+    checkFade();
+});
