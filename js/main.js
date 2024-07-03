@@ -2536,11 +2536,64 @@ $(document).ready(function () {
     // });
 
     // 點擊頁面其他地方時關閉所有下拉選單
+    // $(document).on('click', function(e) {
+    //     if ($(window).width() < 992 && !$(e.target).closest('.dropdown').length) {
+    //         // $('.navbar-collapse .dropdown.open').each(function() {
+    //         //     closeDropdown($(this));
+    //         // });
+    //         dropdowns.forEach(function(dropdown) {
+    //             dropdown.classList.remove('open');
+    //         });
+    //     }
+    // });
+    let activeDropdown = null;
+    let clickTimer = null;
+    const clickDelay = 200; // 毫秒
+
     $(document).on('click', function(e) {
-        if ($(window).width() < 992 && !$(e.target).closest('.dropdown').length) {
-            $('.navbar-collapse .dropdown.open').each(function() {
-                closeDropdown($(this));
-            });
+        if ($(window).width() < 992) {
+            const clickedDropdown = $(e.target).closest('.dropdown');
+            
+            if (clickedDropdown.length) {
+                // 清除之前的定時器
+                if (clickTimer) {
+                    clearTimeout(clickTimer);
+                }
+
+                // 點擊的是下拉菜單
+                clickTimer = setTimeout(function() {
+                    if (activeDropdown === clickedDropdown[0]) {
+                        // 如果點擊的是當前打開的下拉菜單，則關閉它
+                        closeDropdown(clickedDropdown);
+                        activeDropdown = null;
+                    } else {
+                        // 如果點擊的是其他下拉菜單，則關閉當前打開的，並打開新的
+                        if (activeDropdown) {
+                            closeDropdown($(activeDropdown));
+                        }
+                        openDropdown(clickedDropdown);
+                        activeDropdown = clickedDropdown[0];
+                    }
+                }, clickDelay);
+            } else if (!$(e.target).closest('.dropdown-menu').length) {
+                // 點擊的不是下拉菜單也不是下拉菜單的內容，關閉所有下拉菜單
+                if (activeDropdown) {
+                    closeDropdown($(activeDropdown));
+                    activeDropdown = null;
+                }
+            }
+        }
+    });
+
+    $('.dropdown').on('mouseenter mouseleave', function(e) {
+        if ($(window).width() < 992) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (clickTimer) {
+                clearTimeout(clickTimer);
+                clickTimer = null;
+            }
         }
     });
 
