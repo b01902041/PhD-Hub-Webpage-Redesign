@@ -1,8 +1,8 @@
 <?php
-    require_once 'mock_database.php';
+    require_once './php/mock_database.php';
 
-    include 'header.php';
-    include 'navigation.php';
+    include './php/header.php';
+    include './php/navigation.php';
 
     $events = getEventsFromDatabase();
     $lastIndex = 0;
@@ -90,5 +90,5 @@
         </div>
     </section>
 <?php
-    include 'footer.php';
+    include './php/footer.php';
 ?>
