@@ -18725,7 +18725,7 @@
     .container .event-card-container {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /* align-items: center; */
         width: 100%;
         gap: 20px;
         margin-bottom: 24px;

@@ -9988,6 +9988,11 @@ nav.navbar.bootsnav.menu-center ul.nav.navbar-center {
   table-layout: fixed;
 }
 
+.nav-container {
+  display: flex;
+  justify-content: center;
+}
+
 /* simple dropdown menu */
 .simple-dropdown.dropdown {
   position: relative;
@@ -15958,7 +15963,7 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
   gap: 20px;
   margin-bottom: 36px;
   margin-top: 36px;
-  animation-delay: 0.3s;
+  animation-delay: 0s;
 }
 
 .card-image {
@@ -15967,7 +15972,7 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
   aspect-ratio: 1;
   align-self: flex-start;
   margin: 10px 16px 0 0;
-  animation-delay: 0.6s;
+  animation-delay: 0s;
 }
 
 .card-image img {
@@ -15987,7 +15992,7 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
   flex-direction: column;
   height: 100%;
   justify-content: flex-start;
-  animation-delay: 0.9s;
+  animation-delay: 0.2s;
 }
 
 .event-info {
@@ -16035,7 +16040,7 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
   font-size: 14px;
   line-height: 2;
   font-weight: 500;
-  color: var(--text-dark-gray);
+  color: #6f6f6f;
   margin: 0;
   flex-grow: 1;
 }
@@ -16077,13 +16082,13 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
 .scroll-fade.appear .card-image {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.2s;
+    transition-delay: 0s;
 }
 
 .scroll-fade.appear .card-content {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 /* .scroll-fade.appear .card-content .event-link {
@@ -16121,6 +16126,15 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
   text-decoration: underline;
   text-decoration-thickness: 2px;  
   color: #241341;
+}
+
+.event-link.disabled {
+  pointer-events: none;
+  /* color: black !important; */
+  background-color: transparent !important;
+  text-decoration: none;
+  cursor: default;
+  opacity: 1 !important;
 }
 
 .card-image-link {
