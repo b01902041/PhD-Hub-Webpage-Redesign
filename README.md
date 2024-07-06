@@ -1,8 +1,8 @@
-## PhD Hub Webpage Redesign
+# PhD Hub Webpage Redesign
 
 Redesign and develop the "Leadership" webpage for a modern and impactful user experience
 
-#### Running the Project
+### Running the Project
 
 There are two ways to run this project:
 
@@ -23,13 +23,13 @@ There are two ways to run this project:
 4. Open a web browser and go to `http://localhost:8000/leadership.php`.
 5. The project should now be running in your browser.
 
-#### Features
+### Features
 
 - Scroll fade-in animations
 - Responsive design
 - Tab navigation for accessibility
 
-#### Built With
+### Built With
 
 - Design
     - Figma
@@ -39,6 +39,6 @@ There are two ways to run this project:
     - JavaScript
     - PHP
 
-#### Author
+### Author
 
 - Claire Chen
