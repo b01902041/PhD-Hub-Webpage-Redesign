@@ -18,7 +18,7 @@
                             <ul id="accordion" class="nav navbar-nav navbar-center alt-font text-normal no-margin">
                                 <li class="dropdown simple-dropdown"><a href="#">Tracks <i class="fas fa-caret-down"></i></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="digital-literacy.html">Digital Literacy for Research</a></li>
+                                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="./html/digital-literacy.html">Digital Literacy for Research</a></li>
                                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Leadership</a></li>
                                     </ul>
                                 </li>
