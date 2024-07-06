@@ -26,15 +26,12 @@
     </section>
     <section class="padding-100px-bottom padding-10px-top">
         <div class="container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-sm-12 col-xs-12">
-                        <h4 class="alt-font text-extra-dark-gray track-title">Leadership</h4>
-                    </div>
+            <div class="row">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    <h4 class="alt-font text-extra-dark-gray track-title">Leadership</h4>
                 </div>
             </div>
             
-        <div class="container">
             <div class="card-events-all">
                 <?php
                 foreach ($events as $event) {
@@ -75,14 +72,12 @@
                 }
                 ?>
             </div>
-            <div class="container">
-                <div class="reminder-container scroll-fade" data-index="<?php echo $lastIndex + 1; ?>">
-                    <h1 class="reminder-title">Kindly note:</h1>
-                    <ul class="reminder-ul">
-                        <li>The students will need to attend all the workshops in the track they choose.</li>
-                        <li>Registration limited to first 50 doctoral students.</li>
-                    </ul>
-                </div>
+            <div class="reminder-container scroll-fade" data-index="<?php echo $lastIndex + 1; ?>">
+                <h1 class="reminder-title">Kindly note:</h1>
+                <ul class="reminder-ul">
+                    <li>The students will need to attend all the workshops in the track they choose.</li>
+                    <li>Registration limited to first 50 doctoral students.</li>
+                </ul>
             </div>
             <div class="row margin-30px-top">
                 <div align="center"><a href="https://forms.gle/eri3Wfz4xoHJ8Roj6" class="btn btn-deep-pink btn-rounded btn-extra-large align-top sm-no-margin-right" target="_blank">Register <i class="fas fa-arrow-right"></i></a></div>

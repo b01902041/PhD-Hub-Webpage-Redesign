@@ -2376,7 +2376,7 @@ $(document).ready(function () {
         mainClass: 'mfp-fade',
         closeOnBgClick: true,
         preloader: false,
-        // for white backgriund
+        // for white background
         fixedContentPos: false,
         closeBtnInside: false,
         callbacks: {
@@ -2503,71 +2503,43 @@ $(document).ready(function () {
         }
     }
 
-    // 處理主導航項目的點擊
     $('.navbar-collapse .dropdown > a').on(isTouchDevice ? 'touchstart' : 'click', function(e) {
         handleDropdownToggle(e, $(this));
     });
 
-    // 處理下拉菜單內的選項點擊
     $('.dropdown-menu a').on('click', function(e) {
         if ($(window).width() < 992) {
             e.stopPropagation();
             var $dropdown = $(this).closest('.dropdown');
             closeDropdown($dropdown);
             
-            // 使用 setTimeout 來確保跳轉發生在下拉菜單關閉之後
             var href = $(this).attr('href');
             setTimeout(function() {
                 window.location.href = href;
             }, 300);
             
-            return false; // 阻止默認行為，我們將手動處理跳轉
+            return false;
         }
     });
 
-    // 處理下拉菜單內的選項點擊
-    // $('.dropdown-menu a').on('click', function(e) {
-    //     if ($(window).width() < 992) {
-    //         e.stopPropagation();
-    //         var $dropdown = $(this).closest('.dropdown');
-    //         closeDropdown($dropdown);
-    //         // 不阻止默認行為，允許鏈接跳轉
-    //     }
-    // });
-
-    // 點擊頁面其他地方時關閉所有下拉選單
-    // $(document).on('click', function(e) {
-    //     if ($(window).width() < 992 && !$(e.target).closest('.dropdown').length) {
-    //         // $('.navbar-collapse .dropdown.open').each(function() {
-    //         //     closeDropdown($(this));
-    //         // });
-    //         dropdowns.forEach(function(dropdown) {
-    //             dropdown.classList.remove('open');
-    //         });
-    //     }
-    // });
     let activeDropdown = null;
     let clickTimer = null;
-    const clickDelay = 200; // 毫秒
+    const clickDelay = 200;
 
     $(document).on('click', function(e) {
         if ($(window).width() < 992) {
             const clickedDropdown = $(e.target).closest('.dropdown');
             
             if (clickedDropdown.length) {
-                // 清除之前的定時器
                 if (clickTimer) {
                     clearTimeout(clickTimer);
                 }
 
-                // 點擊的是下拉菜單
                 clickTimer = setTimeout(function() {
                     if (activeDropdown === clickedDropdown[0]) {
-                        // 如果點擊的是當前打開的下拉菜單，則關閉它
                         closeDropdown(clickedDropdown);
                         activeDropdown = null;
                     } else {
-                        // 如果點擊的是其他下拉菜單，則關閉當前打開的，並打開新的
                         if (activeDropdown) {
                             closeDropdown($(activeDropdown));
                         }
@@ -2576,7 +2548,6 @@ $(document).ready(function () {
                     }
                 }, clickDelay);
             } else if (!$(e.target).closest('.dropdown-menu').length) {
-                // 點擊的不是下拉菜單也不是下拉菜單的內容，關閉所有下拉菜單
                 if (activeDropdown) {
                     closeDropdown($(activeDropdown));
                     activeDropdown = null;
@@ -2596,129 +2567,6 @@ $(document).ready(function () {
             }
         }
     });
-
-    // $('.navbar-collapse .dropdown > a').on(isTouchDevice ? 'touchstart' : 'click', function (e) {
-    //     handleDropdownToggle(e, $(this));
-    // });
-
-    // function handleDropdownToggle(e, $element) {
-    //     if ($(window).width() < 992) {
-    //         var $parent = $element.parent();
-    //         var $dropdownMenu = $parent.find('> .dropdown-menu');
-    //         var $caret = $element.find('.fas.fa-caret-down');
-    
-    //         // 檢查是否為下拉菜單的主要項目（有箭頭的項目）
-    //         if ($caret.length > 0) {
-    //             e.preventDefault();
-    //             e.stopPropagation();
-    
-    //             // 檢查是否已經打開
-    //             if ($parent.hasClass('open')) {
-    //                 // 如果已經打開，則關閉
-    //                 $parent.removeClass('open');
-    //                 $dropdownMenu.slideUp();
-    //                 $caret.css('transform', 'rotate(0deg)'); // 箭頭旋轉回原位
-    //             } else {
-    //                 // 如果關閉，則打開
-    //                 // 首先關閉其他打開的菜單
-    //                 $('.navbar-collapse .dropdown.open').not($parent).each(function() {
-    //                     $(this).removeClass('open').find('.dropdown-menu').slideUp();
-    //                     $(this).find('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    //                 });
-    
-    //                 // 然後打開當前菜單
-    //                 $parent.addClass('open');
-    //                 $dropdownMenu.slideDown();
-    //                 $caret.css('transform', 'rotate(180deg)'); // 箭頭旋轉180度
-    //             }
-    //         }
-    //         // 如果不是主要下拉項目（沒有箭頭），不阻止默認行為，允許頁面跳轉
-    //     }
-    // }
-    
-    // // 處理下拉菜單內的選項點擊
-    // $('.dropdown-menu dropdown a').on('click', function(e) {
-    //     if ($(window).width() < 992) {
-    //         e.stopPropagation();
-    //         var $dropdown = $(this).closest('.dropdown');
-    //         closeDropdown($dropdown);
-    //     }
-    //     // 不阻止默認行為，允許鏈接跳轉
-    // });
-
-    // // 添加點擊事件處理程序來關閉下拉菜單
-    // $(document).on('click', function(e) {
-    //     if ($(window).width() < 992 && !$(e.target).closest('.dropdown').length) {
-    //         $('.navbar-collapse .dropdown.open').each(function() {
-    //             $(this).removeClass('open').find('.dropdown-menu').slideUp();
-    //             $(this).find('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    //         });
-    //     }
-    // });
-    
-    // // 綁定點擊事件到導航項目
-    // $('.navbar-nav .nav-item > a').on('click', function(e) {
-    //     handleDropdownToggle(e, $(this));
-    // });
-    
-    // // 處理下拉菜單內的選項點擊
-    // $('.dropdown-menu a').on('click', function(e) {
-    //     if ($(window).width() < 992) {
-    //         // 關閉當前打開的下拉菜單
-    //         var $dropdown = $(this).closest('.dropdown');
-    //         $dropdown.removeClass('open');
-    //         $dropdown.find('.dropdown-menu').slideUp();
-    //         $dropdown.find('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-            
-    //         // 不阻止默認行為，允許頁面跳轉
-    //     }
-    // });
-
-    // // 點擊頁面其他地方時關閉所有下拉選單
-    // $(document).on(isTouchDevice ? 'touchstart' : 'click', function(e) {
-    //     if (!$(e.target).closest('.navbar-collapse').length) {
-    //         $('.navbar-collapse .dropdown.open').each(function() {
-    //             $(this).removeClass('open').find('.dropdown-menu').slideUp();
-    //             $(this).find('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    //         });
-    //     }
-    // });
-
-
-    
-    // function handleDropdownToggle(e, $element) {
-    //     if ($(window).width() < 992) {
-    //         e.preventDefault();
-    //         e.stopPropagation();
-
-    //         var $parent = $element.parent();
-    //         var $dropdownMenu = $parent.find('> .dropdown-menu');
-    //         var $caret = $element.find('.fas.fa-caret-down');
-
-    //         // 檢查是否已經打開
-    //         if ($parent.hasClass('open')) {
-    //             // 如果已經打開，則關閉
-    //             $parent.removeClass('open');
-    //             $dropdownMenu.slideUp();
-    //             $caret.css('transform', 'rotate(0deg)'); // 箭頭旋轉回原位
-    //         } else {
-    //             // 如果關閉，則打開
-    //             // 首先關閉其他打開的菜單
-    //             $('.navbar-collapse .dropdown.open').not($parent).each(function() {
-    //                 $(this).removeClass('open').find('.dropdown-menu').slideUp();
-    //                 $(this).find('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    //             });
-
-    //             // 然後打開當前菜單
-    //             $parent.addClass('open');
-    //             $dropdownMenu.slideDown();
-    //             $caret.css('transform', 'rotate(180deg)'); // 箭頭旋轉180度
-    //         }
-    //     }
-    // }
-
-
-
 
     $('button.navbar-toggle').on("click", function (e) {
         if (isMobile) {
@@ -2976,27 +2824,6 @@ $(window).load(function () {
  END Page Load
  ====================================== */
 
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     let lastScrollTop = 0;
-//     const header = document.querySelector('header');
-//     const navbar = document.querySelector('.navbar');
-
-//     window.addEventListener('scroll', function() {
-//         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-//         if (scrollTop > lastScrollTop && scrollTop > navbar.clientHeight) {
-//             // 向下滾動
-//             header.classList.add('nav-up');
-//         } else {
-//             // 向上滾動或在頁面頂部
-//             header.classList.remove('nav-up');
-//         }
-        
-//         lastScrollTop = scrollTop;
-//     });
-// });
 document.addEventListener('DOMContentLoaded', function() {
     let lastScrollTop = 0;
     const header = document.querySelector('header');
@@ -3009,10 +2836,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 let scrollTop = window.scrollY || document.documentElement.scrollTop;
                 
                 if (scrollTop > lastScrollTop && scrollTop > navbar.clientHeight) {
-                    // 向下滾動
                     header.classList.add('nav-up');
                 } else {
-                    // 向上滾動或在頁面頂部
                     header.classList.remove('nav-up');
                 }
                 

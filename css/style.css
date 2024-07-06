@@ -15956,6 +15956,10 @@ header.sticky nav.navbar.brand-center ul.nav>li>a {
 /* ===================================
    Event Card Horizontal
 ====================================== */
+.container {
+  align-content: center;
+}
+
 .event-card-container {
   display: flex;
   flex-direction: row;
