@@ -14,7 +14,7 @@ function getEventsFromDatabase() {
             'pdf_url' => './pdf/perry-atwal-f2021.pdf'
         ),
         array(
-            'id' => 2,
+            'id' => 3,
             'title' => 'Decision Making and Leadership',
             'speaker' => 'PROF. JUSTIN G. BULL',
             'date' => '5 & 19 Oct., 2024',
@@ -26,7 +26,7 @@ function getEventsFromDatabase() {
             'pdf_url' => './pdf/justin-g-bull-f2021.pdf'
         ),
         array(
-            'id' => 3,
+            'id' => 5,
             'title' => 'Successful Storytelling to Land Your Job & Grant',
             'speaker' => 'MS. DASHA RETTEW',
             'date' => '2 & 16 Nov., 2024',
@@ -38,7 +38,7 @@ function getEventsFromDatabase() {
             'pdf_url' => './pdf/dasha-rettew-f2021.pdf'
         ),
         array(
-            'id' => 4,
+            'id' => 7,
             'title' => 'Coming Soon',
             'speaker' => 'NYU TANDON',
             'date' => '7 & 21 Dec., 2024',

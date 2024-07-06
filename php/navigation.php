@@ -12,7 +12,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!-- <div align="center"> -->
                     <div class="nav-container">
                         <div class="navbar-collapse collapse" id="navbar-collapse-toggle-1">
                             <ul id="accordion" class="nav navbar-nav navbar-center alt-font text-normal no-margin">
